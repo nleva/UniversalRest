@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ru.send-to.rest</groupId>
+	<artifactId>UniversalRest-parent</artifactId>
+	<version>0.0.3</version>
+	<packaging>pom</packaging>
+	<name>UniversalRest-parent</name>
+
+	<url>http://github.com/nleva/UniversalRest</url>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>9</version>
+	</parent>
+
+	<modules>
+		<module>UniversalRest</module>
+		<module>UniversalRest-api</module>
+	</modules>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/nleva/UniversalRest</url>
+		<connection>scm:git:https://github.com/nleva/UniversalRest.git</connection>
+		<developerConnection>scm:git:https://github.com/nleva/UniversalRest.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>nleva</id>
+			<name>Lev Nadeinsky</name>
+			<email>n.lev.a@ya.ru</email>
+			<timezone>+4</timezone>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>ru.send-to.rest</groupId>
+				<artifactId>UniversalRest</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ru.send-to.rest</groupId>
+				<artifactId>UniversalRest-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-web-api</artifactId>
+				<version>7.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>ru.send-to.dto</groupId>
+				<artifactId>DtoCommon</artifactId>
+				<version>0.0.4</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>ru.send-to.ejb</groupId>
+				<artifactId>EjbContext</artifactId>
+				<version>0.0.3</version>
+				<type>ejb</type>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>
