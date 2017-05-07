@@ -16,6 +16,7 @@
 
 	<modules>
 		<module>UniversalRest</module>
+		<module>UniversalRest-api</module>
 	</modules>
 
 	<licenses>
