@@ -40,6 +40,10 @@
     
     <dependencies>
         <dependency>
+        	<groupId>ru.send-to.rest</groupId>
+        	<artifactId>UniversalRest-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <scope>provided</scope>

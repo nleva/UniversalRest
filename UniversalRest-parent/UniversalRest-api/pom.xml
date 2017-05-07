@@ -8,4 +8,43 @@
   <artifactId>UniversalRest-api</artifactId>
   <name>Universal Rest Api</name>
   <description>Universal Rest Api and gwt compilation module</description>
+  
+  	<url>http://github.com/nleva/UniversalRest</url>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/nleva/UniversalRest</url>
+		<connection>scm:git:https://github.com/nleva/UniversalRest.git</connection>
+		<developerConnection>scm:git:https://github.com/nleva/UniversalRest.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+  
+  	<developers>
+		<developer>
+			<id>nleva</id>
+			<name>Lev Nadeinsky</name>
+			<email>n.lev.a@ya.ru</email>
+			<timezone>+4</timezone>
+		</developer>
+	</developers>
+	<dependencies>
+	        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>ru.send-to.dto</groupId>
+        	<artifactId>DtoCommon</artifactId>
+        </dependency>	
+		
+	</dependencies>
+  
+  
 </project>
