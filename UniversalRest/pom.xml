@@ -62,7 +62,7 @@
         <dependency>
         	<groupId>ru.send-to.ejb</groupId>
         	<artifactId>EjbContext</artifactId>
-        	<version>0.0.2</version>
+        	<version>0.0.3</version>
         	<type>ejb</type>
         	<scope>provided</scope>
         </dependency>
