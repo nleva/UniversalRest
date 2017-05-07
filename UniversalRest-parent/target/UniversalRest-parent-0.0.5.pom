@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.send-to.rest</groupId>
 	<artifactId>UniversalRest-parent</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<packaging>pom</packaging>
 	<name>UniversalRest-parent</name>
 
@@ -16,6 +16,7 @@
 	<modules>
 		<module>UniversalRest</module>
 		<module>UniversalRest-api</module>
+		<module>UniversalRest-gwt</module>
 	</modules>
 
 	<licenses>
@@ -30,7 +31,7 @@
 		<url>https://github.com/nleva/UniversalRest</url>
 		<connection>scm:git:https://github.com/nleva/UniversalRest.git</connection>
 		<developerConnection>scm:git:https://github.com/nleva/UniversalRest.git</developerConnection>
-		<tag>UniversalRest-parent-0.0.4</tag>
+		<tag>UniversalRest-parent-0.0.5</tag>
 	</scm>
 
 	<developers>
@@ -64,21 +65,29 @@
 				<groupId>javax</groupId>
 				<artifactId>javaee-web-api</artifactId>
 				<version>7.0</version>
-				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>ru.send-to.dto</groupId>
 				<artifactId>DtoCommon</artifactId>
 				<version>0.0.4</version>
-				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>ru.send-to.gwt.html</groupId>
+				<artifactId>HtmlGwt</artifactId>
+				<version>2.8.1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>ru.send-to.gwt</groupId>
+				<artifactId>EventBus</artifactId>
+				<version>2.8.1.0</version>
 			</dependency>
 			<dependency>
 				<groupId>ru.send-to.ejb</groupId>
 				<artifactId>EjbContext</artifactId>
 				<version>0.0.3</version>
 				<type>ejb</type>
-				<scope>provided</scope>
 			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 	<build>
