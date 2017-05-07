@@ -28,13 +28,11 @@ import lombok.extern.java.Log;
 import ru.sendto.dto.Dto;
 import ru.sendto.ejb.EventResultsBean;
 import ru.sendto.ejb.dto.ErrorDto;
+import ru.sendto.rest.api.DirectUniversalRestApi;
 
-@Stateless
-@Path("/")
 @Log
-@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
-public class UniversalRest {
+@Stateless
+public class UniversalRest implements DirectUniversalRestApi {
 
 	@Inject
 	Event<Dto> bus;
@@ -47,9 +45,10 @@ public class UniversalRest {
 	
 	boolean init = false;
 
-	@POST
-	@PUT
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	/* (non-Javadoc)
+	 * @see ru.sendto.rest.DirectUniversalRestApi#doPost(ru.sendto.dto.Dto)
+	 */
+	@Override
 	public List<Dto> doPost(Dto dto) {
 		try {
 			init = true;
