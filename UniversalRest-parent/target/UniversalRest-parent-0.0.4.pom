@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.send-to.rest</groupId>
 	<artifactId>UniversalRest-parent</artifactId>
-	<version>0.0.5-SNAPSHOT</version>
+	<version>0.0.4</version>
 	<packaging>pom</packaging>
 	<name>UniversalRest-parent</name>
 
@@ -16,7 +16,6 @@
 	<modules>
 		<module>UniversalRest</module>
 		<module>UniversalRest-api</module>
-		<module>UniversalRest-gwt</module>
 	</modules>
 
 	<licenses>
@@ -31,7 +30,7 @@
 		<url>https://github.com/nleva/UniversalRest</url>
 		<connection>scm:git:https://github.com/nleva/UniversalRest.git</connection>
 		<developerConnection>scm:git:https://github.com/nleva/UniversalRest.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>UniversalRest-parent-0.0.4</tag>
 	</scm>
 
 	<developers>
