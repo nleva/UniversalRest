@@ -3,7 +3,7 @@
   <parent>
     <groupId>ru.send-to.rest</groupId>
     <artifactId>UniversalRest-parent</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4-SNAPSHOT</version>
   </parent>
   <artifactId>UniversalRest-api</artifactId>
   <name>Universal Rest Api</name>
