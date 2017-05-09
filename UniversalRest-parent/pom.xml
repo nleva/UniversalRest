@@ -18,6 +18,7 @@
 		<module>UniversalRest</module>
 		<module>UniversalRest-api</module>
 		<module>UniversalRest-gwt</module>
+		<module>UniversalRest-websocket</module>
 	</modules>
 
 	<licenses>
