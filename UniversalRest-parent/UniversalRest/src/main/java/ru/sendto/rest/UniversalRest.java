@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.ejb.LocalBean;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -32,6 +33,7 @@ import ru.sendto.rest.api.DirectUniversalRestApi;
 
 @Log
 @Stateless
+@LocalBean
 public class UniversalRest implements DirectUniversalRestApi {
 
 	@Inject
