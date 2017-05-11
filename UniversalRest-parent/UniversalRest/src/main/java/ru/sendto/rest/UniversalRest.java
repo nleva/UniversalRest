@@ -8,22 +8,19 @@ import javax.annotation.Resource;
 import javax.ejb.LocalBean;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.enterprise.event.TransactionPhase;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
+import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
 import javax.ws.rs.OPTIONS;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Context;
 
 import lombok.extern.java.Log;
 import ru.sendto.dto.Dto;
@@ -37,13 +34,20 @@ import ru.sendto.rest.api.DirectUniversalRestApi;
 public class UniversalRest implements DirectUniversalRestApi {
 
 	@Inject
-	Event<Dto> bus;
+	Event<Object> bus;
 
 	@Inject
 	EventResultsBean ctx;
 
 	@Resource
 	SessionContext sctx;
+
+	@Context
+	HttpServletResponse resp;
+	@Context
+	HttpServletRequest req;
+	@Context
+	ServletContext servletCtx;
 	
 	boolean init = false;
 
@@ -53,7 +57,9 @@ public class UniversalRest implements DirectUniversalRestApi {
 	@Override
 	public List<Dto> doPost(Dto dto) {
 		try {
+			req.setAttribute("response", resp);
 			init = true;
+			bus.fire(req);
 			bus.fire(dto);
 			final Map<Dto, List<Dto>> data = ctx.getData();
 			final List<Dto> list = data.get(dto);
@@ -63,6 +69,10 @@ public class UniversalRest implements DirectUniversalRestApi {
 			log.throwing(UniversalRest.class.getName(), "doPost", e);
 			return Arrays.asList(new ErrorDto().setError(e.getMessage()));
 		}
+	}
+	
+	public void addFilter(@Observes Filter f){
+		servletCtx.addFilter(f.getClass().getCanonicalName(), f);
 	}
 
 	@GET
