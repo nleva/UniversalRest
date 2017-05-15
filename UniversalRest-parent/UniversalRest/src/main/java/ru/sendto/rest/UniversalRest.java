@@ -25,8 +25,8 @@ import javax.ws.rs.core.Context;
 import lombok.extern.java.Log;
 import ru.sendto.dto.Dto;
 import ru.sendto.ejb.EventResultsBean;
-import ru.sendto.ejb.dto.ErrorDto;
 import ru.sendto.rest.api.DirectUniversalRestApi;
+import ru.sendto.rest.api.ErrorDto;
 
 @Log
 @Stateless
