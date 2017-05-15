@@ -70,7 +70,7 @@
 			<dependency>
 				<groupId>ru.send-to.dto</groupId>
 				<artifactId>DtoCommon</artifactId>
-				<version>0.0.4</version>
+				<version>0.0.6</version>
 			</dependency>
 			<dependency>
 				<groupId>ru.send-to.gwt.html</groupId>
@@ -85,14 +85,14 @@
 			<dependency>
 				<groupId>ru.send-to.ejb</groupId>
 				<artifactId>EjbContext</artifactId>
-				<version>0.0.3</version>
+				<version>0.0.6.1</version>
 				<type>ejb</type>
 			</dependency>
 
 			<dependency>
 				<groupId>ru.send-to.websocket</groupId>
 				<artifactId>CDIEndpoint</artifactId>
-				<version>0.0.3.2</version>
+				<version>0.0.6.0</version>
 				
 			</dependency>
 		</dependencies>
