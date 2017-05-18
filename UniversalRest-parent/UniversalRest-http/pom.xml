@@ -6,7 +6,7 @@
 		<artifactId>UniversalRest-parent</artifactId>
 		<version>0.0.10-SNAPSHOT</version>
 	</parent>
-    <artifactId>UniversalRest</artifactId>
+    <artifactId>UniversalRest-http</artifactId>
     <packaging>war</packaging>
 
     <name>UniversalRest</name>
