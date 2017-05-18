@@ -42,6 +42,7 @@
         <dependency>
         	<groupId>ru.send-to.rest</groupId>
         	<artifactId>UniversalRest-api</artifactId>
+			<scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
