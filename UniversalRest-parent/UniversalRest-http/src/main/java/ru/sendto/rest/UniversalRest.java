@@ -27,6 +27,7 @@ import ru.sendto.dto.Dto;
 import ru.sendto.ejb.EventResultsBean;
 import ru.sendto.rest.api.DirectUniversalRestApi;
 import ru.sendto.rest.api.ErrorDto;
+import ru.sendto.rest.api.HttpBundle;
 
 @Log
 @Stateless
@@ -59,7 +60,7 @@ public class UniversalRest implements DirectUniversalRestApi {
 		try {
 			req.setAttribute("response", resp);
 			init = true;
-			bus.fire(req);
+			bus.fire(new HttpBundle().setRequest(req).setResponse(resp));
 			bus.fire(dto);
 			final Map<Dto, List<Dto>> data = ctx.getData();
 			final List<Dto> list = data.get(dto);
