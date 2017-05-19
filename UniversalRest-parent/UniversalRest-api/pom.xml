@@ -1,15 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>ru.send-to.rest</groupId>
-    <artifactId>UniversalRest-parent</artifactId>
-    <version>0.1.2-SNAPSHOT</version>
-  </parent>
-  <artifactId>UniversalRest-api</artifactId>
-  <name>Universal Rest Api</name>
-  <description>Universal Rest Api and gwt compilation module</description>
-  
-  	<url>http://github.com/nleva/UniversalRest</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>ru.send-to.rest</groupId>
+		<artifactId>UniversalRest-parent</artifactId>
+		<version>0.1.2-SNAPSHOT</version>
+	</parent>
+	<artifactId>UniversalRest-api</artifactId>
+	<name>Universal Rest Api</name>
+	<description>Universal Rest Api and gwt compilation module</description>
+
+	<url>http://github.com/nleva/UniversalRest</url>
 
 	<licenses>
 		<license>
@@ -23,14 +24,9 @@
 		<url>https://github.com/nleva/UniversalRest</url>
 		<connection>scm:git:https://github.com/nleva/UniversalRest.git</connection>
 		<developerConnection>scm:git:https://github.com/nleva/UniversalRest.git</developerConnection>
-<<<<<<< HEAD
-    <tag>0.1.3</tag>
-=======
-    <tag>HEAD</tag>
->>>>>>> branch 'master' of https://github.com/nleva/UniversalRest.git
-  </scm>
-  
-  	<developers>
+	</scm>
+
+	<developers>
 		<developer>
 			<id>nleva</id>
 			<name>Lev Nadeinsky</name>
@@ -39,16 +35,16 @@
 		</developer>
 	</developers>
 	<dependencies>
-	        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-        </dependency>
-        <dependency>
-        	<groupId>ru.send-to.dto</groupId>
-        	<artifactId>DtoCommon</artifactId>
-        </dependency>	
-		
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ru.send-to.dto</groupId>
+			<artifactId>DtoCommon</artifactId>
+		</dependency>
+
 	</dependencies>
-  
-  
+
+
 </project>
