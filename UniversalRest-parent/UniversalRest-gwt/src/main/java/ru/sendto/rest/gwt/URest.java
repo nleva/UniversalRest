@@ -12,9 +12,9 @@ import org.fusesource.restygwt.client.REST;
 import com.google.gwt.core.client.GWT;
 
 import ru.sendto.dto.Dto;
+import ru.sendto.dto.ErrorDto;
 import ru.sendto.gwt.client.util.Bus;
 import ru.sendto.rest.api.DirectUniversalRestApi;
-import ru.sendto.rest.api.ErrorDto;
 
 /**
  * Universal rest service api

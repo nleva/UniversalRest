@@ -1,4 +1,4 @@
-package ru.sendto.rest.api;
+package ru.sendto.rest.server.api;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -24,10 +24,10 @@ import javax.ws.rs.core.Context;
 
 import lombok.extern.java.Log;
 import ru.sendto.dto.Dto;
+import ru.sendto.dto.ErrorDto;
 import ru.sendto.ejb.EventResultsBean;
 import ru.sendto.rest.api.DirectUniversalRestApi;
-import ru.sendto.rest.api.ErrorDto;
-import ru.sendto.rest.api.HttpBundle;
+import ru.sendto.rest.server.api.HttpBundle;
 
 @Log
 @Stateless
