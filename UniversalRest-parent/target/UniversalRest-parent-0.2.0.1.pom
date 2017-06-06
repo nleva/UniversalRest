@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.send-to.rest</groupId>
 	<artifactId>UniversalRest-parent</artifactId>
-	<version>0.2.0.2-SNAPSHOT</version>
+	<version>0.2.0.1</version>
 	<packaging>pom</packaging>
 	<name>UniversalRest-parent</name>
 
@@ -32,7 +32,7 @@
 		<url>https://github.com/nleva/UniversalRest</url>
 		<connection>scm:git:https://github.com/nleva/UniversalRest.git</connection>
 		<developerConnection>scm:git:https://github.com/nleva/UniversalRest.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>UniversalRest-parent-0.2.0.1</tag>
 	</scm>
 
 	<developers>
@@ -54,22 +54,12 @@
 		<dependencies>
 			<dependency>
 				<groupId>ru.send-to.rest</groupId>
+				<artifactId>UniversalRest</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ru.send-to.rest</groupId>
 				<artifactId>UniversalRest-api</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>ru.send-to.rest</groupId>
-				<artifactId>UniversalRest-gwt</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>ru.send-to.rest</groupId>
-				<artifactId>UniversalRest-http</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>ru.send-to.rest</groupId>
-				<artifactId>UniversalRest-websocket</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
