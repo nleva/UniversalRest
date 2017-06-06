@@ -19,7 +19,6 @@ import ru.sendto.dto.Dto;
 public interface DirectUniversalRestApi  extends DirectRestService {
 
 	@POST
-	@PUT
 	List<Dto> doPost(Dto dto);
 
 }
