@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>ru.send-to.rest</groupId>
 		<artifactId>UniversalRest-parent</artifactId>
-		<version>0.2.0.3-SNAPSHOT</version>
+		<version>0.1.3.1</version>
 	</parent>
 	<artifactId>UniversalRest-gwt</artifactId>
 	<name>UniversalRest Gwt Api</name>
@@ -27,7 +27,7 @@
 		<url>https://github.com/nleva/UniversalRest</url>
 		<connection>scm:git:https://github.com/nleva/UniversalRest.git</connection>
 		<developerConnection>scm:git:https://github.com/nleva/UniversalRest.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>UniversalRest-parent-0.1.3.1</tag>
 	</scm>
 
 	<developers>
