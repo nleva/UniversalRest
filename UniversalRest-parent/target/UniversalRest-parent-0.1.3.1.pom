@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.send-to.rest</groupId>
 	<artifactId>UniversalRest-parent</artifactId>
-	<version>0.2.0.2</version>
+	<version>0.1.3.1</version>
 	<packaging>pom</packaging>
 	<name>UniversalRest-parent</name>
 
@@ -32,7 +32,7 @@
 		<url>https://github.com/nleva/UniversalRest</url>
 		<connection>scm:git:https://github.com/nleva/UniversalRest.git</connection>
 		<developerConnection>scm:git:https://github.com/nleva/UniversalRest.git</developerConnection>
-		<tag>UniversalRest-parent-0.2.0.2</tag>
+		<tag>UniversalRest-parent-0.1.3.1</tag>
 	</scm>
 
 	<developers>
@@ -56,21 +56,25 @@
 				<groupId>ru.send-to.rest</groupId>
 				<artifactId>UniversalRest-api</artifactId>
 				<version>${project.version}</version>
+				<type>jar</type>
 			</dependency>
 			<dependency>
 				<groupId>ru.send-to.rest</groupId>
 				<artifactId>UniversalRest-gwt</artifactId>
 				<version>${project.version}</version>
+				<type>jar</type>
 			</dependency>
 			<dependency>
 				<groupId>ru.send-to.rest</groupId>
 				<artifactId>UniversalRest-http</artifactId>
 				<version>${project.version}</version>
+				<type>war</type>
 			</dependency>
 			<dependency>
 				<groupId>ru.send-to.rest</groupId>
 				<artifactId>UniversalRest-websocket</artifactId>
 				<version>${project.version}</version>
+				<type>war</type>
 			</dependency>
 			<dependency>
 				<groupId>javax</groupId>
@@ -80,7 +84,7 @@
 			<dependency>
 				<groupId>ru.send-to.dto</groupId>
 				<artifactId>DtoCommon</artifactId>
-				<version>0.2.0</version>
+				<version>0.1.3</version>
 			</dependency>
 			<dependency>
 				<groupId>ru.send-to.gwt.html</groupId>
@@ -95,14 +99,14 @@
 			<dependency>
 				<groupId>ru.send-to.ejb</groupId>
 				<artifactId>EjbContext</artifactId>
-				<version>0.2.0.0</version>
+				<version>0.1.3.0</version>
 				<type>ejb</type>
 			</dependency>
 
 			<dependency>
 				<groupId>ru.send-to.websocket</groupId>
 				<artifactId>CDIEndpoint</artifactId>
-				<version>0.2.0.0</version>
+				<version>0.1.3.0</version>
 				
 			</dependency>
 		</dependencies>

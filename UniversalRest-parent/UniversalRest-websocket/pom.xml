@@ -58,7 +58,12 @@
 			<type>ejb</type>
 			<scope>provided</scope>
 		</dependency>
-		
+        <dependency>
+        	<groupId>ru.send-to.ejb</groupId>
+        	<artifactId>EjbContext</artifactId>
+        	<type>ejb</type>
+        	<scope>provided</scope>
+        </dependency>
 		<dependency>
 			<groupId>ru.send-to.websocket</groupId>
 			<artifactId>CDIEndpoint</artifactId>
