@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>ru.send-to.rest</groupId>
 		<artifactId>UniversalRest-parent</artifactId>
-		<version>0.1.4.0-SNAPSHOT</version>
+		<version>0.1.4.1-SNAPSHOT</version>
 	</parent>
     <artifactId>UniversalRest-http</artifactId>
     <packaging>war</packaging>
