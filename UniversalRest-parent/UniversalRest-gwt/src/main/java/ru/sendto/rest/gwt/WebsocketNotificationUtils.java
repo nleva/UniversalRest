@@ -1,7 +1,8 @@
 package ru.sendto.rest.gwt;
 
-import ru.sendto.gwt.client.util.Websocket.ConnectedEvent;
-import ru.sendto.gwt.client.util.Websocket.DisconnectedEvent;
+import ru.sendto.gwt.client.util.Bus;
+import ru.sendto.rest.gwt.Websocket.ConnectedEvent;
+import ru.sendto.rest.gwt.Websocket.DisconnectedEvent;
 
 public class WebsocketNotificationUtils {
 

@@ -1,19 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>ru.send-to.rest</groupId>
 		<artifactId>UniversalRest-parent</artifactId>
 		<version>0.1.4.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>UniversalRest-gwt</artifactId>
-	<name>UniversalRest Gwt Api</name>
-	<description>Gwt api to access universal rest service</description>
+    <artifactId>UniversalRest-http</artifactId>
+    <packaging>war</packaging>
 
-	<properties>
-		<!-- Convenience property to set the GWT version -->
-		<gwtVersion>2.8.1</gwtVersion>
-	</properties>
-	<url>http://github.com/nleva/UniversalRest</url>
+    <name>UniversalRest</name>
+
+  	<url>http://github.com/nleva/UniversalRest</url>
 
 	<licenses>
 		<license>
@@ -27,8 +25,8 @@
 		<url>https://github.com/nleva/UniversalRest</url>
 		<connection>scm:git:https://github.com/nleva/UniversalRest.git</connection>
 		<developerConnection>scm:git:https://github.com/nleva/UniversalRest.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
+    <tag>HEAD</tag>
+  </scm>
 
 	<developers>
 		<developer>
@@ -38,81 +36,52 @@
 			<timezone>+4</timezone>
 		</developer>
 	</developers>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.google.gwt</groupId>
-				<artifactId>gwt</artifactId>
-				<version>${gwtVersion}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-	<dependencies>
-		<dependency>
-			<groupId>ru.send-to.rest</groupId>
-			<artifactId>UniversalRest-api</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>ru.send-to.dto</groupId>
-			<artifactId>DtoCommon</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>ru.send-to.gwt</groupId>
-			<artifactId>EventBus</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>ru.send-to.gwt.html</groupId>
-			<artifactId>HtmlGwt</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>ru.send-to.gwt</groupId>
-			<artifactId>Notifications</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>ru.send-to.gwt</groupId>
-			<artifactId>EventBus</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.fusesource.restygwt</groupId>
-			<artifactId>restygwt</artifactId>
-			<version>2.2.0</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<scope>compile</scope>
-		</dependency>
 
+    
+    <dependencies>
+        <dependency>
+        	<groupId>ru.send-to.rest</groupId>
+        	<artifactId>UniversalRest-api</artifactId>
+			<scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+        	<groupId>ru.send-to.dto</groupId>
+        	<artifactId>DtoCommon</artifactId>
+        	<scope>provided</scope>
+        </dependency>
+        <dependency>
+        	<groupId>ru.send-to.ejb</groupId>
+        	<artifactId>EjbContext</artifactId>
+        	<type>ejb</type>
+        	<scope>provided</scope>
+        </dependency>
+    </dependencies>
 
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.7</version>
@@ -195,7 +164,6 @@
 			</plugin>
 
 			<plugin>
-
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
@@ -231,7 +199,7 @@
 					</execution>
 				</executions>
 			</plugin>
-		</plugins>
-	</build>
+        </plugins>
+    </build>
 
 </project>
