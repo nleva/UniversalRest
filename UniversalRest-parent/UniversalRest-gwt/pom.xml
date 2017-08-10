@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>ru.send-to.rest</groupId>
 		<artifactId>UniversalRest-parent</artifactId>
-		<version>0.1.3.4-SNAPSHOT</version>
+		<version>0.1.4.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>UniversalRest-gwt</artifactId>
 	<name>UniversalRest Gwt Api</name>
@@ -58,6 +58,11 @@
 		<dependency>
 			<groupId>ru.send-to.dto</groupId>
 			<artifactId>DtoCommon</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>ru.send-to.gwt</groupId>
+			<artifactId>EventBus</artifactId>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

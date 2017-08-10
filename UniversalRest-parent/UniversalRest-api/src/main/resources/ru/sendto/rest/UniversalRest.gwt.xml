@@ -2,5 +2,7 @@
 <module rename-to="UniversalRest">
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="org.fusesource.restygwt.RestyGWT"/>
+	<inherits name="ru.sendto.gwt.client.Bus" />
 	<source path="api" />
+	<source path="gwt" />
 </module>
