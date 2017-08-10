@@ -72,11 +72,6 @@
 		</dependency>
 		<dependency>
 			<groupId>ru.send-to.gwt</groupId>
-			<artifactId>Notifications</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>ru.send-to.gwt</groupId>
 			<artifactId>EventBus</artifactId>
 			<scope>compile</scope>
 		</dependency>
