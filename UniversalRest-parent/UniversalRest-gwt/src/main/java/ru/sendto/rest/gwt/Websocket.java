@@ -18,7 +18,9 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.typedarrays.shared.ArrayBuffer;
 
 import ru.sendto.dto.Dto;
+import ru.sendto.dto.RequestInfo;
 import ru.sendto.gwt.client.util.Bus;
+import ru.sendto.rest.api.ResponseDto;
 
 /**
  * Класс реализующий вэбсокет.
@@ -212,7 +214,21 @@ public class Websocket {
 	 */
 	private static void receiv(String m) {
 		Dto dto = codec.decode(m);
+		if(dto instanceof ResponseDto) {
+			ResponseDto respDto = (ResponseDto)dto;
+			final List<Dto> list = respDto.getList();
+			final Bus bus = Bus.get(respDto.getClass().getName());
+			list.forEach(bus::fire);
+		}else if(dto instanceof RequestInfo) {
+			Bus.get(dto.getClass().getName()).fire(dto);
+		}
 		Bus.get().fire(dto);
+		
+		invokeOldCalbacks(dto);
+	}
+
+	@Deprecated
+	private static void invokeOldCalbacks(Dto dto) {
 		List<IDtoMessageCallback> callList = callbackDtoList.get(dto.getClass().getName());
 		if(callList!=null){
 			for (IDtoMessageCallback call : callList) {

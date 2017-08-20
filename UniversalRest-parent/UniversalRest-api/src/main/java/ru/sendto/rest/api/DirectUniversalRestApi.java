@@ -19,5 +19,9 @@ public interface DirectUniversalRestApi  extends DirectRestService {
 
 	@POST
 	List<Dto> doPost(Dto dto);
+	
+	@POST
+	@Path("/wrap")
+	ResponseDto doPostWraped(Dto dto);
 
 }

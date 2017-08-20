@@ -28,13 +28,26 @@ import ru.sendto.rest.api.DirectUniversalRestApi;
 public class URest<T,S extends DirectRestService> {
 
 	private static class Callback implements MethodCallback<List<Dto>> {
+		
+		Dto request;
+		
+		public Callback setRequest(Dto request) {
+			this.request = request;
+			return this;
+		}
+		
 		@Override
 		public void onFailure(Method method, Throwable exception) {
-			Bus.get().fire(new ErrorDto().setError(exception.getMessage()));
+			Bus.get(request.getClass().getName())
+					.fire(new ErrorDto().setError(exception.getMessage()));
+			Bus.get()
+					.fire(new ErrorDto().setError(exception.getMessage()));
 		}
 
 		@Override
 		public void onSuccess(Method method, List<Dto> list) {
+			final Bus bus = Bus.get(request.getClass().getName());
+			list.forEach(bus::fire);
 			list.forEach(Bus.get()::fire);
 		}
 	}
@@ -46,7 +59,7 @@ public class URest<T,S extends DirectRestService> {
 	}
 	
 	public static void send(Dto dto){
-		REST.withCallback(new Callback()).call(getUniRest()).doPost(dto);
+		REST.withCallback(new Callback().setRequest(dto)).call(getUniRest()).doPost(dto);
 	}
 	
 	public static void setServiceRoot(String serviceRootUrl) {

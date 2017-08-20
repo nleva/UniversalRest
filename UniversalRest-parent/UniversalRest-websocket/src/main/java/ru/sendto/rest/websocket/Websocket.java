@@ -1,19 +1,26 @@
 package ru.sendto.rest.websocket;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
+import javax.websocket.EncodeException;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
 import lombok.extern.java.Log;
 import ru.sendto.dto.Dto;
+import ru.sendto.dto.ErrorDto;
+import ru.sendto.dto.RequestInfoUtil;
 import ru.sendto.ejb.EventResultsBean;
+import ru.sendto.rest.api.ResponseDto;
 import ru.sendto.websocket.WebsocketEventService;
 
 @Singleton
@@ -29,19 +36,29 @@ public class Websocket extends WebsocketEventService {
 
 	@Override
 	public void onMessage(Dto msg, Session session) {
-		super.onMessage(msg, session);
-		final Map<Dto, List<Dto>> data = ctx.getData();
-		final List<Dto> list = data.get(msg);
-		if (list == null)
-			return;
+		ResponseDto rdto = new ResponseDto();
+		RequestInfoUtil.setRequestSample(rdto, msg.getClass());
 		try {
-			for (Dto d : list) {
-				if (d != null) {
-					session.getBasicRemote().sendObject(d);
-				}
+			messageBus.fire(session);
+			messagePayloadBus.fire(msg);
+
+			final Map<Dto, List<Dto>> data = ctx.getData();
+			final List<Dto> list = data.get(msg);
+			if (list == null)
+				return;
+			try {
+				session.getBasicRemote().sendObject(rdto.setList(list));
+			} catch (Exception e) {
+				log.throwing(Websocket.class.getName(), "failed to send result to client", e);
 			}
 		} catch (Exception e) {
-			log.throwing(Websocket.class.getName(), "doPost", e);
+			try {
+				session.getBasicRemote().sendObject(rdto.setList(
+						Arrays.asList(new ErrorDto().setError(e.getMessage()))));
+			} catch (IOException | EncodeException e1) {
+				log.throwing(Websocket.class.getName(), "failed to send exception to client", e);
+			}
+			log.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 }
