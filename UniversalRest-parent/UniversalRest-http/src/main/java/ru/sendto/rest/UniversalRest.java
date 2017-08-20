@@ -25,7 +25,6 @@ import javax.ws.rs.core.Context;
 import lombok.extern.java.Log;
 import ru.sendto.dto.Dto;
 import ru.sendto.dto.ErrorDto;
-import ru.sendto.dto.RequestInfoUtil;
 import ru.sendto.ejb.EventResultsBean;
 import ru.sendto.rest.api.DirectUniversalRestApi;
 import ru.sendto.rest.api.ResponseDto;
@@ -77,7 +76,12 @@ public class UniversalRest implements DirectUniversalRestApi {
 	@Override
 	public ResponseDto doPostWraped(Dto dto) {
 		ResponseDto rdto = new ResponseDto();
-		RequestInfoUtil.setRequestSample(rdto, dto.getClass());
+		try {
+			rdto.setRequest(dto.getClass().newInstance());
+		} catch (InstantiationException | IllegalAccessException e1) {
+			log.throwing(UniversalRest.class.getName(), "dto.getClass().newInstance() failed", e1);
+			
+		}
 		try {
 			req.setAttribute("response", resp);
 			init = true;

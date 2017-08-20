@@ -18,7 +18,6 @@ import javax.websocket.server.ServerEndpoint;
 import lombok.extern.java.Log;
 import ru.sendto.dto.Dto;
 import ru.sendto.dto.ErrorDto;
-import ru.sendto.dto.RequestInfoUtil;
 import ru.sendto.ejb.EventResultsBean;
 import ru.sendto.rest.api.ResponseDto;
 import ru.sendto.websocket.WebsocketEventService;
@@ -37,7 +36,11 @@ public class Websocket extends WebsocketEventService {
 	@Override
 	public void onMessage(Dto msg, Session session) {
 		ResponseDto rdto = new ResponseDto();
-		RequestInfoUtil.setRequestSample(rdto, msg.getClass());
+		try {
+			rdto.setRequest(msg.getClass().newInstance());
+		} catch (InstantiationException | IllegalAccessException e2) {
+			log.throwing(Websocket.class.getName(), "dto.getClass().newInstance() failed", e2);
+		}
 		try {
 			messageBus.fire(session);
 			messagePayloadBus.fire(msg);
