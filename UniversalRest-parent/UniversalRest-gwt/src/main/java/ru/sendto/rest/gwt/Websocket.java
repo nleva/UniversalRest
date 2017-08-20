@@ -217,10 +217,10 @@ public class Websocket {
 		if(dto instanceof ResponseDto) {
 			ResponseDto respDto = (ResponseDto)dto;
 			final List<Dto> list = respDto.getList();
-			final Bus bus = Bus.get(respDto.getClass().getName());
+			final Bus bus = Bus.get(respDto.getRequest().getClass().getName());
 			list.forEach(bus::fire);
 		}else if(dto instanceof RequestInfo) {
-			Bus.get(dto.getClass().getName()).fire(dto);
+			Bus.get(((RequestInfo)dto).getRequest().getClass().getName()).fire(dto);
 		}
 		Bus.get().fire(dto);
 		
