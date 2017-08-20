@@ -23,7 +23,6 @@ import ru.sendto.rest.api.DirectUniversalRestApi;
  * Bus.get().listen to set listener
  * 
  * @author Lev Nadeinsky
- * @date	2017-05-07
  */
 public class URest<T,S extends DirectRestService> {
 
