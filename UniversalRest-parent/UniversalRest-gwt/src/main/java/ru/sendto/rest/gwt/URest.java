@@ -37,7 +37,7 @@ public class URest<T,S extends DirectRestService> {
 		
 		@Override
 		public void onFailure(Method method, Throwable exception) {
-			Bus.get(request.getClass().getName())
+			Bus.getBy(request.getClass().getName())
 					.fire(new ErrorDto().setError(exception.getMessage()));
 			Bus.get()
 					.fire(new ErrorDto().setError(exception.getMessage()));
@@ -45,7 +45,7 @@ public class URest<T,S extends DirectRestService> {
 
 		@Override
 		public void onSuccess(Method method, List<Dto> list) {
-			final Bus bus = Bus.get(request.getClass().getName());
+			final Bus bus = Bus.getBy(request.getClass().getName());
 			list.forEach(bus::fire);
 			list.forEach(Bus.get()::fire);
 		}

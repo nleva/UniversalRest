@@ -168,7 +168,7 @@ public class Websocket {
 		@ru.sendto.rest.gwt.Websocket::ws.onclose = function() {
 			console.log("clodsed");
 			if (@ru.sendto.rest.gwt.Websocket::connected)
-				@ru.sendto.rest.gwt.Websocket::reconnect(Ljava/lang/String;I)(url,5000);
+				@ru.sendto.rest.gwt.Websocket::	reconnect(Ljava/lang/String;I)(url,5000);
 			@ru.sendto.rest.gwt.Websocket::connected = false;
 
 		}
@@ -220,36 +220,32 @@ public class Websocket {
 	 *            - строка сообщения.
 	 */
 	private static void receiv(String m) {
-		Log.console(m);
 		Dto dto = codec.decode(m);
-		Log.console(dto.getClass().getName());
 		if(dto instanceof ResponseDto) {
 
-			Log.console("1");
 			ResponseDto respDto = (ResponseDto)dto;
 			final List<Dto> list = respDto.getList();
-			final Bus bus = Bus.get(respDto.getRequest());
-			Log.console(respDto.getRequest().getClass().getName());
+			Bus bus = Bus.getBy(respDto.getRequest());
 			list.forEach(bus::fire);
+			bus = Bus.get();
+			list.forEach(bus::fire);
+			list.forEach(Websocket::invokeOldCalbacks);
+
 		}else if(dto instanceof RequestInfo) {
 
-			Log.console("2");
-			Bus.get(((RequestInfo)dto).getRequest().getClass().getName()).fire(dto);
+			Bus.getBy(((RequestInfo)dto).getRequest().getClass().getName()).fire(dto);
+			Bus.get().fire(dto);			
+			invokeOldCalbacks(dto);
+
+		}else {
+			Bus.get().fire(dto);
+			invokeOldCalbacks(dto);
 		}
-
-		Log.console("3");
-		Bus.get().fire(dto);
-
-		Log.console("4");
-		invokeOldCalbacks(dto);
-
-		Log.console("5");
 	}
 
 	@Deprecated
 	private static void invokeOldCalbacks(Dto dto) {
 		List<IDtoMessageCallback> callList = callbackDtoList.get(dto.getClass().getName());
-		Log.console("old listeners size " + callList.size());
 		if(callList!=null){
 			for (IDtoMessageCallback call : callList) {
 				call.onMessage(dto);
