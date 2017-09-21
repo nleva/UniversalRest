@@ -19,7 +19,6 @@ import com.google.gwt.typedarrays.shared.ArrayBuffer;
 
 import ru.sendto.dto.Dto;
 import ru.sendto.dto.RequestInfo;
-import ru.sendto.gwt.client.html.Log;
 import ru.sendto.gwt.client.util.Bus;
 import ru.sendto.rest.api.ResponseDto;
 
@@ -151,16 +150,14 @@ public class Websocket {
 		@ru.sendto.rest.gwt.Websocket::ws = new WebSocket(url);
 		@ru.sendto.rest.gwt.Websocket::ws.binaryType = "arraybuffer";
 		@ru.sendto.rest.gwt.Websocket::ws.onmessage = function(e) {
-			console.log("--->");
 			if (typeof e.data === "string"){
-				console.log("--->"+e.data);
 				@ru.sendto.rest.gwt.Websocket::receiv(*)(e.data);
 			}else{
 				@ru.sendto.rest.gwt.Websocket::receivBin(*)(e.data);
 			}
 		}
 		@ru.sendto.rest.gwt.Websocket::ws.onopen = function() {
-			console.log("connected...");
+			console.log("connected");
 			@ru.sendto.rest.gwt.Websocket::connected = true;
 			@ru.sendto.rest.gwt.Websocket::reconnectCount = 0;
 			@ru.sendto.rest.gwt.Websocket::onOpen()();
