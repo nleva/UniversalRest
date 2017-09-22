@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>ru.send-to.rest</groupId>
 		<artifactId>UniversalRest-parent</artifactId>
-		<version>0.3.2.2-SNAPSHOT</version>
+		<version>0.3.2.2</version>
 	</parent>
     <artifactId>UniversalRest-http</artifactId>
     <packaging>war</packaging>
@@ -25,7 +25,7 @@
 		<url>https://github.com/nleva/UniversalRest</url>
 		<connection>scm:git:https://github.com/nleva/UniversalRest.git</connection>
 		<developerConnection>scm:git:https://github.com/nleva/UniversalRest.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>UniversalRest-parent-0.3.2.2</tag>
   </scm>
 
 	<developers>
