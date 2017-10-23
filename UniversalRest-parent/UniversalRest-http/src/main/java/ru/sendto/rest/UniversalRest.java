@@ -26,6 +26,7 @@ import lombok.extern.java.Log;
 import ru.sendto.dto.Dto;
 import ru.sendto.dto.ErrorDto;
 import ru.sendto.ejb.EventResultsBean;
+import ru.sendto.ejb.SingleRequestEventResultsBean;
 import ru.sendto.rest.api.DirectUniversalRestApi;
 import ru.sendto.rest.api.ResponseDto;
 import ru.sendto.rest.server.api.HttpBundle;
@@ -38,9 +39,12 @@ public class UniversalRest implements DirectUniversalRestApi {
 	@Inject
 	Event<Object> bus;
 
-	@Inject
-	EventResultsBean ctx;
+//	@Inject
+//	EventResultsBean ctx;
 
+	@Inject
+	SingleRequestEventResultsBean ctx;
+	
 	@Resource
 	SessionContext sctx;
 
@@ -63,8 +67,8 @@ public class UniversalRest implements DirectUniversalRestApi {
 			init = true;
 			bus.fire(new HttpBundle().setRequest(req).setResponse(resp));
 			bus.fire(dto);
-			final Map<Dto, List<Dto>> data = ctx.getData();
-			final List<Dto> list = data.get(dto);
+//			final Map<Dto, List<Dto>> data = ctx.getData();
+			final List<Dto> list = ctx.get();
 			return list;
 		} catch (Exception e) {
 			sctx.setRollbackOnly();
@@ -87,8 +91,7 @@ public class UniversalRest implements DirectUniversalRestApi {
 			init = true;
 			bus.fire(new HttpBundle().setRequest(req).setResponse(resp));
 			bus.fire(dto);
-			final Map<Dto, List<Dto>> data = ctx.getData();
-			final List<Dto> list = data.get(dto);
+			final List<Dto> list = ctx.get();
 			
 			return rdto.setList(list);
 			
@@ -113,7 +116,7 @@ public class UniversalRest implements DirectUniversalRestApi {
 
 	public void afterComplition(@Observes(during = TransactionPhase.AFTER_COMPLETION) Dto dto) {
 		if (init) {
-			ctx.clear(dto);
+			ctx.clear();
 		}
 		init = false;
 	}
