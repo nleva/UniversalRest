@@ -2,7 +2,6 @@ package ru.sendto.rest;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.ejb.LocalBean;
@@ -25,7 +24,6 @@ import javax.ws.rs.core.Context;
 import lombok.extern.java.Log;
 import ru.sendto.dto.Dto;
 import ru.sendto.dto.ErrorDto;
-import ru.sendto.ejb.EventResultsBean;
 import ru.sendto.ejb.SingleRequestEventResultsBean;
 import ru.sendto.rest.api.DirectUniversalRestApi;
 import ru.sendto.rest.api.ResponseDto;

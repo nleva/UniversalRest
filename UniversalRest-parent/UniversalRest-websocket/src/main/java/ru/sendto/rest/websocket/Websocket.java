@@ -3,7 +3,6 @@ package ru.sendto.rest.websocket;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 
 import javax.ejb.LocalBean;
@@ -13,15 +12,12 @@ import javax.ejb.Singleton;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.websocket.EncodeException;
-import javax.websocket.EndpointConfig;
-import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
 import lombok.extern.java.Log;
 import ru.sendto.dto.Dto;
 import ru.sendto.dto.ErrorDto;
-import ru.sendto.ejb.EventResultsBean;
 import ru.sendto.ejb.SingleRequestEventResultsBean;
 import ru.sendto.rest.api.ResponseDto;
 import ru.sendto.websocket.WebsocketEventService;
