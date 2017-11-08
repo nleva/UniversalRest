@@ -104,7 +104,7 @@
 			<dependency>
 				<groupId>ru.send-to.ejb</groupId>
 				<artifactId>EjbContext</artifactId>
-				<version>0.3.2.3</version>
+				<version>0.3.2.4</version>
 				<type>ejb</type>
 			</dependency>
 

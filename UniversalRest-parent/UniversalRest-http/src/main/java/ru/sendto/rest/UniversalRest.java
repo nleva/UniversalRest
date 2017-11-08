@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.enterprise.event.TransactionPhase;
+import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.ServletContext;
@@ -53,8 +54,19 @@ public class UniversalRest implements DirectUniversalRestApi {
 	@Context
 	ServletContext servletCtx;
 	
-	boolean init = false;
-
+	@Produces
+	public HttpServletRequest getReq() {
+		return req;
+	}
+	@Produces
+	public HttpServletResponse getResp() {
+		return resp;
+	}
+	@Produces
+	public ServletContext getServletCtx() {
+		return servletCtx;
+	}
+	
 	/* (non-Javadoc)
 	 * @see ru.sendto.rest.DirectUniversalRestApi#doPost(ru.sendto.dto.Dto)
 	 */
@@ -62,7 +74,6 @@ public class UniversalRest implements DirectUniversalRestApi {
 	public List<Dto> doPost(Dto dto) {
 		try {
 			req.setAttribute("response", resp);
-			init = true;
 			bus.fire(new HttpBundle().setRequest(req).setResponse(resp));
 			bus.fire(dto);
 //			final Map<Dto, List<Dto>> data = ctx.getData();
@@ -72,6 +83,8 @@ public class UniversalRest implements DirectUniversalRestApi {
 			sctx.setRollbackOnly();
 			log.throwing(UniversalRest.class.getName(), "doPost", e);
 			return Arrays.asList(new ErrorDto().setError(e.getMessage()));
+		} finally {
+			ctx.clear();
 		}
 	}
 	
@@ -86,7 +99,6 @@ public class UniversalRest implements DirectUniversalRestApi {
 		}
 		try {
 			req.setAttribute("response", resp);
-			init = true;
 			bus.fire(new HttpBundle().setRequest(req).setResponse(resp));
 			bus.fire(dto);
 			final List<Dto> list = ctx.get();
@@ -97,6 +109,8 @@ public class UniversalRest implements DirectUniversalRestApi {
 			sctx.setRollbackOnly();
 			log.throwing(UniversalRest.class.getName(), "doPost", e);
 			return rdto.setList(Arrays.asList(new ErrorDto().setError(e.getMessage())));
+		} finally {
+			ctx.clear();
 		}
 	}
 	
@@ -110,13 +124,6 @@ public class UniversalRest implements DirectUniversalRestApi {
 	@OPTIONS
 	public List<Dto> onOtherMethods() {
 		return Arrays.asList(new ErrorDto().setError("Only POST and PUT methods are permitted"));
-	}
-
-	public void afterComplition(@Observes(during = TransactionPhase.AFTER_COMPLETION) Dto dto) {
-		if (init) {
-			ctx.clear();
-		}
-		init = false;
 	}
 
 }
