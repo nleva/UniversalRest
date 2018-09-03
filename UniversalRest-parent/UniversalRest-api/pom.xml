@@ -52,7 +52,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
+				<version>3.8.0</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -61,14 +61,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.7</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.shared</groupId>
-						<artifactId>maven-filtering</artifactId>
-						<version>3.0.0</version>
-					</dependency>
-				</dependencies>
+				<version>3.1.0</version>
 				<executions>
 					<execution>
 						<id>copy-resources</id>
@@ -80,9 +73,6 @@
 						<configuration>
 							<outputDirectory>target/classes/</outputDirectory>
 							<resources>
-								<!-- <resource> <directory>${basedir}/src/main/java/</directory> 
-									<filtering>true</filtering> <includes> <include>**/*.java</include> </includes> 
-									</resource> -->
 								<resource>
 									<directory>${basedir}/src/main/resources/</directory>
 									<filtering>true</filtering>
@@ -106,7 +96,7 @@
 			<plugin>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok-maven-plugin</artifactId>
-				<version>1.16.18.1</version>
+				<version>1.18.0.0</version>
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
@@ -117,8 +107,6 @@
 							<encoding>UTF-8</encoding>
 							<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
 							<addOutputDirectory>false</addOutputDirectory>
-							<!-- <outputDirectory>${project.build.directory}/generated-sources/ru/sendto/lmps/gwt/client 
-								</outputDirectory> -->
 							<verbose>true</verbose>
 						</configuration>
 					</execution>
@@ -137,7 +125,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
+				<version>3.1.0</version>
 			</plugin>
 
 			<plugin>
@@ -166,7 +154,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.4</version>
+				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
