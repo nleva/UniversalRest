@@ -54,7 +54,7 @@ public class Websocket extends WebsocketEventService {
 			messagePayloadBus.fire(msg);
 
 			final List<Dto> list = ctx.get();
-			if (list == null)
+			if (list == null || list.isEmpty())
 				return;
 			try {
 				session.getBasicRemote().sendObject(rdto.setList(list));

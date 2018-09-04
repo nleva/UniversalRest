@@ -12,7 +12,7 @@ import ru.sendto.dto.RequestInfo;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@JsonTypeName("u")
+@JsonTypeName("sync")
 public class ResponseDto extends RequestInfo{
 	@JsonProperty("l")
 	List<Dto> list;
