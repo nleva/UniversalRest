@@ -76,7 +76,6 @@ public class UniversalRest implements DirectUniversalRestApi {
 			req.setAttribute("response", resp);
 			bus.fire(new HttpBundle().setRequest(req).setResponse(resp));
 			bus.fire(dto);
-//			final Map<Dto, List<Dto>> data = ctx.getData();
 			final List<Dto> list = ctx.get();
 			return list;
 		} catch (Exception e) {

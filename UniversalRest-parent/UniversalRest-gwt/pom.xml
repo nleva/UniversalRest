@@ -57,7 +57,12 @@
 		</dependency>
 		<dependency>
 			<groupId>ru.send-to.dto</groupId>
-			<artifactId>DtoCommon</artifactId>
+			<artifactId>DtoCommon-core</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>ru.send-to.dto</groupId>
+			<artifactId>DtoCommon-java</artifactId>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
